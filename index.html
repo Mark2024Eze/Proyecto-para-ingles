@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/estilos.css"> <!-- Cambia la ruta al archivo CSS según sea necesario -->
   <style>
@@ -18,11 +18,13 @@
     h1 {
       text-align: center;
       color: #0066cc;
+      font-size: 24px;
     }
 
     h2 {
       margin-bottom: 15px;
       color: #0066cc;
+      font-size: 18px;
     }
 
     p {
@@ -36,10 +38,10 @@
     }
 
     .respuesta {
-      width: 60px; /* Ajusta el ancho según tus preferencias */
+      width: 60px;
       padding: 8px;
       margin-right: 10px;
-      margin-bottom: 5px; /* Ajusta la distancia vertical */
+      margin-bottom: 5px;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -92,7 +94,6 @@
       transform: scale(1.05);
     }
 
-    /* Estilo para la barra de progreso */
     .progress-container {
       margin-bottom: 20px;
       width: 100%;
@@ -111,12 +112,31 @@
       color: white;
     }
 
-    /* Agregado estilo para el pie de página */
     footer {
       text-align: center;
       margin-top: 30px;
       padding-top: 10px;
       border-top: 1px solid #ccc;
+    }
+
+    @media only screen and (max-width: 600px) {
+      body {
+        max-width: 100%;
+        padding: 10px;
+      }
+  
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .respuesta {
+        width: 100%;
+        box-sizing: border-box;
+      }
     }
   </style>
   <title>Ejercicio de Verbos</title>
@@ -125,7 +145,6 @@
 
   <h1>Practica de Verbos en Inglés - Overcome</h1>
 
-  <!-- Barra de progreso -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar">0%</div>
   </div>
@@ -133,29 +152,24 @@
   <h2>Ejemplo 1</h2>
   <p>Yesterday <input type="text" class="respuesta" data-respuesta="was"> (be) my birthday, so my friends <input type="text" class="respuesta" data-respuesta="came"> (come) over to my house for a party. We <input type="text" class="respuesta" data-respuesta="had"> (have) a great time! They <input type="text" class="respuesta" data-respuesta="brought"> (bring) me presents and <input type="text" class="respuesta" data-respuesta="made"> (make) me a cake.</p>
 
-  <!-- Agregado un espacio separador -->
   <div style="margin-bottom: 20px;"></div>
 
   <h2>Ejemplo 2</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very tired today because I <input type="text" class="respuesta" data-respuesta="didn’t sleep"> (not sleep) very well last night. I <input type="text" class="respuesta" data-respuesta="had"> (have) a lot of nightmares. I <input type="text" class="respuesta" data-respuesta="dreamed"> (dream) that I <input type="text" class="respuesta" data-respuesta="fell"> (fall) from a cliff. It <input type="text" class="respuesta" data-respuesta="was"> (be) very scary!</p>
 
-  <!-- Agregado un espacio separador -->
   <div style="margin-bottom: 20px;"></div>
 
   <h2>Ejemplo 3</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very thirsty. I <input type="text" class="respuesta" data-respuesta="drank"> (drink) a lot of water, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) thirsty. I <input type="text" class="respuesta" data-respuesta="thought"> (think) I <input type="text" class="respuesta" data-respuesta="was"> (be) sick. I <input type="text" class="respuesta" data-respuesta="felt"> (feel) very hot.</p>
 
-  <!-- Agregado un espacio separador -->
   <div style="margin-bottom: 20px;"></div>
 
   <h2>Ejemplo 4</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very hungry. I <input type="text" class="respuesta" data-respuesta="ate"> (eat) breakfast, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) very hungry. I <input type="text" class="respuesta" data-respuesta="wanted"> (want) to eat something else.</p>
 
-  <!-- Agregados botones de Corregir y Limpiar con clases específicas -->
   <button onclick="corregir()">Corregir</button>
   <button onclick="limpiar()" class="limpiar-btn">Limpiar</button>
 
-  <!-- Agregado un pie de página con información adicional -->
   <footer>
     Practica de Verbos en Inglés - Desarrollado por Marcos Olmedo - Profesora Mariana © 2024
   </footer>
@@ -181,7 +195,6 @@
         }
       });
 
-      // Actualizar la barra de progreso
       const porcentajeCorrecto = (respuestasCorrectas / respuestas.length) * 100;
       progressBar.style.width = porcentajeCorrecto + '%';
       progressBar.innerHTML = porcentajeCorrecto.toFixed(0) + '% correcto';
@@ -193,7 +206,6 @@
         input.classList.remove('incorrecto', 'correcto');
       });
 
-      // Reiniciar la barra de progreso
       progressBar.style.width = '0%';
       progressBar.innerHTML = '0% correcto';
     }
