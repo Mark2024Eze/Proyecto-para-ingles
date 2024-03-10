@@ -37,13 +37,13 @@
     }
 
     .respuesta {
-      width: calc(33.33% - 5px); /* 33.33% para que haya tres respuestas en una fila */
-      box-sizing: border-box;
-      margin-right: 5px;
-      margin-bottom: 5px; /* Ajusta la distancia vertical */
-      font-size: 14px; /* Tamaño de la fuente reducido */
+      width: 45px; /* Ajusta el ancho según tus preferencias */
+      margin-right: 10px;
+      margin-bottom: 10px; /* Ajusta la distancia vertical */
+      font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      padding: 8px; /* Ajusta el espacio interno del cuadro de texto */
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -122,13 +122,7 @@
 
     @media only screen and (max-width: 600px) {
       .respuesta {
-        width: calc(50% - 5px); /* Cambia al 50% en dispositivos móviles */
-      }
-    }
-
-    @media only screen and (max-width: 400px) {
-      .respuesta {
-        width: calc(100% - 5px); /* Cambia al 100% en dispositivos móviles más pequeños */
+        width: calc(50% - 10px); /* Cambia al 50% en dispositivos móviles */
       }
     }
   </style>
