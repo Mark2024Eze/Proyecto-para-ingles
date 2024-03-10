@@ -15,6 +15,12 @@
       color: #333;
     }
 
+    @media only screen and (max-width: 600px) {
+      body {
+        padding: 10px; /* Ajusta el valor según tus preferencias */
+      }
+    }
+
     h1 {
       text-align: center;
       color: #0066cc;
@@ -37,7 +43,7 @@
     }
 
     .respuesta {
-      width: 45px; /* Ajusta el ancho según tus preferencias */
+      width: 100px; /* Ajusta el ancho según tus preferencias */
       margin-right: 10px;
       margin-bottom: 10px; /* Ajusta la distancia vertical */
       font-size: 16px;
@@ -118,12 +124,6 @@
       margin-top: 30px;
       padding-top: 10px;
       border-top: 1px solid #ccc;
-    }
-
-    @media only screen and (max-width: 600px) {
-      .respuesta {
-        width: calc(22% - 10px); /* Cambia al 50% en dispositivos móviles */
-      }
     }
   </style>
   <title>Ejercicio de Verbos</title>
