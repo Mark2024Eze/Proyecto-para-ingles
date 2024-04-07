@@ -116,23 +116,27 @@
     @media only screen and (max-width: 600px) {
       body {
         padding: 10px;
+        font-size: 14px; /* Reducir el tamaño de fuente para una mejor legibilidad en dispositivos móviles */
       }
 
       h2 {
         margin-top: 20px;
+        font-size: 18px; /* Ajustar el tamaño de los encabezados para dispositivos móviles */
       }
 
       p {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        line-height: 1.5; /* Ajustar el espaciado entre líneas para una mejor legibilidad en dispositivos móviles */
       }
 
       .respuesta {
-        margin-bottom: 15px;
-        width: calc(50% - 10px); /* Reducir el ancho de las respuestas */
+        margin-bottom: 10px; /* Reducir el margen inferior de los cuadros de respuesta */
+        width: calc(50% - 10px); /* Reducir el ancho de las respuestas para dispositivos móviles */
+        font-size: 14px; /* Reducir el tamaño de fuente de las respuestas para dispositivos móviles */
       }
 
       .progress-container {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
       }
 
       footer {
@@ -155,11 +159,20 @@
   <h2>Ejemplo 1</h2>
   <p>Yesterday <input type="text" class="respuesta" data-respuesta="was"> (be) my birthday, so my friends <input type="text" class="respuesta" data-respuesta="came"> (come) over to my house for a party. We <input type="text" class="respuesta" data-respuesta="had"> (have) a great time! They <input type="text" class="respuesta" data-respuesta="brought"> (bring) me presents and <input type="text" class="respuesta" data-respuesta="made"> (make) me a cake.</p>
 
+  <!-- Agregado un espacio separador -->
+  <div style="margin-bottom: 20px;"></div>
+
   <h2>Ejemplo 2</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very tired today because I <input type="text" class="respuesta" data-respuesta="didn't sleep"> (not sleep) very well last night. I <input type="text" class="respuesta" data-respuesta="had"> (have) a lot of nightmares. I <input type="text" class="respuesta" data-respuesta="dreamed"> (dream) that I <input type="text" class="respuesta" data-respuesta="fell"> (fall) from a cliff. It <input type="text" class="respuesta" data-respuesta="was"> (be) very scary!</p>
 
+  <!-- Agregado un espacio separador -->
+  <div style="margin-bottom: 20px;"></div>
+
   <h2>Ejemplo 3</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very thirsty. I <input type="text" class="respuesta" data-respuesta="drank"> (drink) a lot of water, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) thirsty. I <input type="text" class="respuesta" data-respuesta="thought"> (think) I <input type="text" class="respuesta" data-respuesta="was"> (be) sick. I <input type="text" class="respuesta" data-respuesta="felt"> (feel) very hot.</p>
+
+  <!-- Agregado un espacio separador -->
+  <div style="margin-bottom: 20px;"></div>
 
   <h2>Ejemplo 4</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very hungry. I <input type="text" class="respuesta" data-respuesta="ate"> (eat) breakfast, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) very hungry. I <input type="text" class="respuesta" data-respuesta="wanted"> (want) to eat something else.</p>
@@ -218,15 +231,14 @@
   <button onclick="corregir()">Corregir</button>
   <button onclick="limpiar()" class="limpiar-btn">Limpiar</button>
 
-  <!-- Barra de progreso -->
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar">0%</div>
-  </div>
+  <!-- Pie de página con información adicional -->
+  <footer>
+    Práctica de Verbos en Inglés - Desarrollado por Marcos Olmedo - Profesora Mariana © 2024
+  </footer>
 
-  <!-- Script JavaScript para corregir las respuestas -->
   <script>
     const respuestas = document.querySelectorAll('.respuesta');
-    const opciones = document.querySelectorAll('input[type="radio"]');
+    const opcionesCorrectas = document.querySelectorAll('.correcta');
     const progressBar = document.getElementById('progressBar');
 
     function corregir() {
@@ -246,17 +258,9 @@
         }
       });
 
-      // Resaltar la opción correcta seleccionada en las preguntas de opción múltiple
-      opciones.forEach(opcion => {
-        const label = opcion.parentNode;
+      opcionesCorrectas.forEach(opcion => {
         if (opcion.checked) {
-          if (opcion.classList.contains('correcta')) {
-            label.classList.add('correcto');
-            label.classList.remove('incorrecto');
-          } else {
-            label.classList.add('incorrecto');
-            label.classList.remove('correcto');
-          }
+          opcion.parentNode.classList.add('correcto');
         }
       });
 
@@ -272,10 +276,8 @@
         input.classList.remove('incorrecto', 'correcto');
       });
 
-      // Limpiar las opciones seleccionadas
-      opciones.forEach(opcion => {
-        const label = opcion.parentNode;
-        label.classList.remove('incorrecto', 'correcto');
+      opcionesCorrectas.forEach(opcion => {
+        opcion.parentNode.classList.remove('correcto');
       });
 
       // Reiniciar la barra de progreso
@@ -283,10 +285,5 @@
       progressBar.innerHTML = '0% correcto';
     }
   </script>
-
-  <!-- Pie de página con información adicional -->
-  <footer>
-    Práctica de Verbos en Inglés - Desarrollado por Marcos Olmedo - Profesora Mariana © 2024
-  </footer>
 </body>
 </html>
