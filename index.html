@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/estilos.css"> <!-- Cambia la ruta al archivo CSS según sea necesario -->
   <style>
     body {
       max-width: 800px;
@@ -13,23 +12,6 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #f9f9f9;
       color: #333;
-    }
-
-    @media only screen and (max-width: 600px) {
-      body {
-        padding: 20px; /* Ajusta el valor según tus preferencias */
-      }
-
-      .respuesta {
-        width: 80px; /* Ajusta el ancho según tus preferencias */
-        margin-bottom: 10px; /* Ajusta la distancia vertical */
-        font-size: 14px; /* Ajusta el tamaño del texto */
-        padding: 8px; /* Ajusta el espacio interno del cuadro de texto */
-      }
-
-      p {
-        font-size: 14px; /* Ajusta el tamaño del texto de las oraciones */
-      }
     }
 
     h1 {
@@ -54,10 +36,13 @@
     }
 
     .respuesta {
+      width: 45px; /* Ajusta el ancho según tus preferencias */
       margin-right: 10px;
+      margin-bottom: 10px; /* Ajusta la distancia vertical */
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      padding: 8px; /* Ajusta el espacio interno del cuadro de texto */
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -66,18 +51,12 @@
       box-shadow: 0 0 5px rgba(0, 102, 204, 0.7);
     }
 
-    .correcto:hover {
-      box-shadow: 0 0 5px rgba(0, 128, 0, 0.7);
+    .correcto {
+      color: green;
     }
 
     .incorrecto {
       color: red;
-      border-color: red;
-    }
-
-    .correcto {
-      color: green;
-      border-color: green;
     }
 
     button {
@@ -133,50 +112,100 @@
       padding-top: 10px;
       border-top: 1px solid #ccc;
     }
+
+    @media only screen and (max-width: 600px) {
+      .respuesta {
+        width: calc(50% - 10px); /* Cambia al 50% en dispositivos móviles */
+      }
+    }
   </style>
   <title>Ejercicio de Verbos</title>
 </head>
 <body>
 
-  <h1>Practica de Verbos en Inglés - Overcome</h1>
+  <h1>Práctica de Verbos en Inglés - Overcome</h1>
 
   <!-- Barra de progreso -->
   <div class="progress-container">
     <div class="progress-bar" id="progressBar">0%</div>
   </div>
 
+  <!-- Ejemplos -->
   <h2>Ejemplo 1</h2>
   <p>Yesterday <input type="text" class="respuesta" data-respuesta="was"> (be) my birthday, so my friends <input type="text" class="respuesta" data-respuesta="came"> (come) over to my house for a party. We <input type="text" class="respuesta" data-respuesta="had"> (have) a great time! They <input type="text" class="respuesta" data-respuesta="brought"> (bring) me presents and <input type="text" class="respuesta" data-respuesta="made"> (make) me a cake.</p>
-
-  <!-- Agregado un espacio separador -->
-  <div style="margin-bottom: 20px;"></div>
 
   <h2>Ejemplo 2</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very tired today because I <input type="text" class="respuesta" data-respuesta="didn't sleep"> (not sleep) very well last night. I <input type="text" class="respuesta" data-respuesta="had"> (have) a lot of nightmares. I <input type="text" class="respuesta" data-respuesta="dreamed"> (dream) that I <input type="text" class="respuesta" data-respuesta="fell"> (fall) from a cliff. It <input type="text" class="respuesta" data-respuesta="was"> (be) very scary!</p>
 
-  <!-- Agregado un espacio separador -->
-  <div style="margin-bottom: 20px;"></div>
-
   <h2>Ejemplo 3</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very thirsty. I <input type="text" class="respuesta" data-respuesta="drank"> (drink) a lot of water, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) thirsty. I <input type="text" class="respuesta" data-respuesta="thought"> (think) I <input type="text" class="respuesta" data-respuesta="was"> (be) sick. I <input type="text" class="respuesta" data-respuesta="felt"> (feel) very hot.</p>
-
-  <!-- Agregado un espacio separador -->
-  <div style="margin-bottom: 20px;"></div>
 
   <h2>Ejemplo 4</h2>
   <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very hungry. I <input type="text" class="respuesta" data-respuesta="ate"> (eat) breakfast, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) very hungry. I <input type="text" class="respuesta" data-respuesta="wanted"> (want) to eat something else.</p>
 
-  <!-- Agregados botones de Corregir y Limpiar con clases específicas -->
+  <!-- Preguntas -->
+  <h2>Pregunta 1: Selecciona la oración en pasado simple:</h2>
+  <p>
+    <label><input type="radio" name="pregunta1" value="a"> I have visited Paris last summer.</label><br>
+    <label><input type="radio" name="pregunta1" value="b" class="correcta"> We visited Paris last summer.</label><br>
+    <label><input type="radio" name="pregunta1" value="c"> They were visiting Paris last summer.</label>
+  </p>
+
+  <h2>Pregunta 2: Identifica la oración en pasado perfecto:</h2>
+  <p>
+    <label><input type="radio" name="pregunta2" value="a"> She eats dinner at 7 PM.</label><br>
+    <label><input type="radio" name="pregunta2" value="b" class="correcta"> They had eaten dinner before the movie.</label><br>
+    <label><input type="radio" name="pregunta2" value="c"> I will eat dinner later.</label>
+  </p>
+
+  <h2>Pregunta 3: ¿Cuál de las siguientes oraciones está en pasado perfecto continuo?</h2>
+  <p>
+    <label><input type="radio" name="pregunta3" value="a" class="correcta"> We had been playing games for hours.</label><br>
+    <label><input type="radio" name="pregunta3" value="b"> He played the guitar all evening.</label><br>
+    <label><input type="radio" name="pregunta3" value="c"> She will play the piano tomorrow.</label>
+  </p>
+
+  <h2>Pregunta 4: Selecciona la oración correcta en pasado simple:</h2>
+  <p>
+    <label><input type="radio" name="pregunta4" value="a" class="correcta"> We went to the store yesterday.</label><br>
+    <label><input type="radio" name="pregunta4" value="b"> They have gone to the store.</label><br>
+    <label><input type="radio" name="pregunta4" value="c"> I am going to the store now.</label>
+  </p>
+
+  <h2>Pregunta 5: Indica la oración en pasado perfecto continuo:</h2>
+  <p>
+    <label><input type="radio" name="pregunta5" value="a"> She had read the book.</label><br>
+    <label><input type="radio" name="pregunta5" value="b"> They have been reading for hours.</label><br>
+    <label><input type="radio" name="pregunta5" value="c" class="correcta"> I will read the book tomorrow.</label>
+  </p>
+
+  <h2>Pregunta 6: ¿Cuál de las siguientes oraciones está en pasado simple?</h2>
+  <p>
+    <label><input type="radio" name="pregunta6" value="a"> He has written a novel.</label><br>
+    <label><input type="radio" name="pregunta6" value="b" class="correcta"> They wrote a letter yesterday.</label><br>
+    <label><input type="radio" name="pregunta6" value="c"> We will write emails later.</label>
+  </p>
+
+  <h2>Pregunta 7: Elige la oración correcta en pasado perfecto:</h2>
+  <p>
+    <label><input type="radio" name="pregunta7" value="a" class="correcta"> They had played tennis before it started raining.</label><br>
+    <label><input type="radio" name="pregunta7" value="b"> I play tennis every Sunday.</label><br>
+    <label><input type="radio" name="pregunta7" value="c"> She will play tennis tomorrow.</label>
+  </p>
+
+  <!-- Botones de Corregir y Limpiar con clases específicas -->
   <button onclick="corregir()">Corregir</button>
   <button onclick="limpiar()" class="limpiar-btn">Limpiar</button>
 
-  <!-- Agregado un pie de página con información adicional -->
-  <footer>
-    Practica de Verbos en Inglés - Desarrollado por Marcos Olmedo - Profesora Mariana © 2024
-  </footer>
+  <!-- Barra de progreso -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">0%</div>
+  </div>
 
+  <!-- Script JavaScript para corregir las respuestas -->
   <script>
     const respuestas = document.querySelectorAll('.respuesta');
+    const opciones = document.querySelectorAll('input[type="radio"]');
     const progressBar = document.getElementById('progressBar');
 
     function corregir() {
@@ -196,6 +225,20 @@
         }
       });
 
+      // Resaltar la opción correcta seleccionada en las preguntas de opción múltiple
+      opciones.forEach(opcion => {
+        const label = opcion.parentNode;
+        if (opcion.checked) {
+          if (opcion.classList.contains('correcta')) {
+            label.classList.add('correcto');
+            label.classList.remove('incorrecto');
+          } else {
+            label.classList.add('incorrecto');
+            label.classList.remove('correcto');
+          }
+        }
+      });
+
       // Actualizar la barra de progreso
       const porcentajeCorrecto = (respuestasCorrectas / respuestas.length) * 100;
       progressBar.style.width = porcentajeCorrecto + '%';
@@ -208,10 +251,22 @@
         input.classList.remove('incorrecto', 'correcto');
       });
 
+      // Limpiar las opciones seleccionadas
+      opciones.forEach(opcion => {
+        const label = opcion.parentNode;
+        opcion.checked = false;
+        label.classList.remove('correcto', 'incorrecto');
+      });
+
       // Reiniciar la barra de progreso
       progressBar.style.width = '0%';
       progressBar.innerHTML = '0% correcto';
     }
   </script>
+  
+  <!-- Agregado un pie de página con información adicional -->
+  <footer>
+    Práctica de Verbos en Inglés - Desarrollado por Marcos Olmedo - Profesora Mariana © 2024
+  </footer>
 </body>
 </html>
