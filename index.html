@@ -114,8 +114,29 @@
     }
 
     @media only screen and (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+
+      p {
+        margin-bottom: 30px;
+      }
+
       .respuesta {
-        width: calc(50% - 10px); /* Cambia al 50% en dispositivos móviles */
+        margin-bottom: 15px;
+        width: calc(50% - 10px); /* Reducir el ancho de las respuestas */
+      }
+
+      .progress-container {
+        margin-bottom: 30px;
+      }
+
+      footer {
+        margin-top: 20px;
       }
     }
   </style>
@@ -254,8 +275,7 @@
       // Limpiar las opciones seleccionadas
       opciones.forEach(opcion => {
         const label = opcion.parentNode;
-        opcion.checked = false;
-        label.classList.remove('correcto', 'incorrecto');
+        label.classList.remove('incorrecto', 'correcto');
       });
 
       // Reiniciar la barra de progreso
@@ -263,8 +283,8 @@
       progressBar.innerHTML = '0% correcto';
     }
   </script>
-  
-  <!-- Agregado un pie de página con información adicional -->
+
+  <!-- Pie de página con información adicional -->
   <footer>
     Práctica de Verbos en Inglés - Desarrollado por Marcos Olmedo - Profesora Mariana © 2024
   </footer>
