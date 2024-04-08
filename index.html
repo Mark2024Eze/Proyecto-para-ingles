@@ -162,20 +162,7 @@
   <!-- Agregado un espacio separador -->
   <div style="margin-bottom: 20px;"></div>
 
-  <h2>Ejemplo 2</h2>
-  <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very tired today because I <input type="text" class="respuesta" data-respuesta="didn't sleep"> (not sleep) very well last night. I <input type="text" class="respuesta" data-respuesta="had"> (have) a lot of nightmares. I <input type="text" class="respuesta" data-respuesta="dreamed"> (dream) that I <input type="text" class="respuesta" data-respuesta="fell"> (fall) from a cliff. It <input type="text" class="respuesta" data-respuesta="was"> (be) very scary!</p>
-
-  <!-- Agregado un espacio separador -->
-  <div style="margin-bottom: 20px;"></div>
-
-  <h2>Ejemplo 3</h2>
-  <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very thirsty. I <input type="text" class="respuesta" data-respuesta="drank"> (drink) a lot of water, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) thirsty. I <input type="text" class="respuesta" data-respuesta="thought"> (think) I <input type="text" class="respuesta" data-respuesta="was"> (be) sick. I <input type="text" class="respuesta" data-respuesta="felt"> (feel) very hot.</p>
-
-  <!-- Agregado un espacio separador -->
-  <div style="margin-bottom: 20px;"></div>
-
-  <h2>Ejemplo 4</h2>
-  <p>I <input type="text" class="respuesta" data-respuesta="was"> (be) very hungry. I <input type="text" class="respuesta" data-respuesta="ate"> (eat) breakfast, but I <input type="text" class="respuesta" data-respuesta="still was"> (still be) very hungry. I <input type="text" class="respuesta" data-respuesta="wanted"> (want) to eat something else.</p>
+  <!-- ... Otros ejemplos ... -->
 
   <!-- Preguntas -->
   <h2>Pregunta 1: Selecciona la oración en pasado simple:</h2>
@@ -185,47 +172,7 @@
     <label><input type="radio" name="pregunta1" value="c"> They were visiting Paris last summer.</label>
   </p>
 
-  <h2>Pregunta 2: Identifica la oración en pasado perfecto:</h2>
-  <p>
-    <label><input type="radio" name="pregunta2" value="a"> She eats dinner at 7 PM.</label><br>
-    <label><input type="radio" name="pregunta2" value="b" class="correcta"> They had eaten dinner before the movie.</label><br>
-    <label><input type="radio" name="pregunta2" value="c"> I will eat dinner later.</label>
-  </p>
-
-  <h2>Pregunta 3: ¿Cuál de las siguientes oraciones está en pasado perfecto continuo?</h2>
-  <p>
-    <label><input type="radio" name="pregunta3" value="a" class="correcta"> We had been playing games for hours.</label><br>
-    <label><input type="radio" name="pregunta3" value="b"> He played the guitar all evening.</label><br>
-    <label><input type="radio" name="pregunta3" value="c"> She will play the piano tomorrow.</label>
-  </p>
-
-  <h2>Pregunta 4: Selecciona la oración correcta en pasado simple:</h2>
-  <p>
-    <label><input type="radio" name="pregunta4" value="a" class="correcta"> We went to the store yesterday.</label><br>
-    <label><input type="radio" name="pregunta4" value="b"> They have gone to the store.</label><br>
-    <label><input type="radio" name="pregunta4" value="c"> I am going to the store now.</label>
-  </p>
-
-  <h2>Pregunta 5: Indica la oración en pasado perfecto continuo:</h2>
-  <p>
-    <label><input type="radio" name="pregunta5" value="a"> She had read the book.</label><br>
-    <label><input type="radio" name="pregunta5" value="b"> They have been reading for hours.</label><br>
-    <label><input type="radio" name="pregunta5" value="c" class="correcta"> I will read the book tomorrow.</label>
-  </p>
-
-  <h2>Pregunta 6: ¿Cuál de las siguientes oraciones está en pasado simple?</h2>
-  <p>
-    <label><input type="radio" name="pregunta6" value="a"> He has written a novel.</label><br>
-    <label><input type="radio" name="pregunta6" value="b" class="correcta"> They wrote a letter yesterday.</label><br>
-    <label><input type="radio" name="pregunta6" value="c"> We will write emails later.</label>
-  </p>
-
-  <h2>Pregunta 7: Elige la oración correcta en pasado perfecto:</h2>
-  <p>
-    <label><input type="radio" name="pregunta7" value="a" class="correcta"> They had played tennis before it started raining.</label><br>
-    <label><input type="radio" name="pregunta7" value="b"> I play tennis every Sunday.</label><br>
-    <label><input type="radio" name="pregunta7" value="c"> She will play tennis tomorrow.</label>
-  </p>
+  <!-- ... Otras preguntas ... -->
 
   <!-- Botones de Corregir y Limpiar con clases específicas -->
   <button onclick="corregir()">Corregir</button>
@@ -284,6 +231,24 @@
       progressBar.style.width = '0%';
       progressBar.innerHTML = '0% correcto';
     }
+
+    // Agregar eventos de cambio para las opciones del múltiple choice
+    const opciones = document.querySelectorAll('input[type="radio"]');
+    opciones.forEach(opcion => {
+      opcion.addEventListener('change', function() {
+        const pregunta = this.name;
+        const respuestaSeleccionada = document.querySelector(`input[name="${pregunta}"]:checked`);
+        const esCorrecta = respuestaSeleccionada.classList.contains('correcta');
+
+        if (respuestaSeleccionada) {
+          if (esCorrecta) {
+            respuestaSeleccionada.parentNode.style.color = 'green';
+          } else {
+            respuestaSeleccionada.parentNode.style.color = 'red';
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
