@@ -59,6 +59,12 @@
       color: red;
     }
 
+    .incorrecto::after {
+      content: '\2715'; /* Cruz roja */
+      margin-left: 5px;
+      color: red;
+    }
+
     button {
       padding: 10px 15px;
       font-size: 16px;
@@ -147,7 +153,6 @@
   <title>Ejercicio de Verbos</title>
 </head>
 <body>
-
   <h1>Práctica de Verbos en Inglés - Overcome</h1>
 
   <!-- Barra de progreso -->
@@ -226,7 +231,6 @@
     <label><input type="radio" name="pregunta7" value="b"> I play tennis every Sunday.</label><br>
     <label><input type="radio" name="pregunta7" value="c"> She will play tennis tomorrow.</label>
   </p>
-
   <!-- Botones de Corregir y Limpiar con clases específicas -->
   <button onclick="corregir()">Corregir</button>
   <button onclick="limpiar()" class="limpiar-btn">Limpiar</button>
@@ -259,8 +263,11 @@
       });
 
       opcionesCorrectas.forEach(opcion => {
+        const label = opcion.parentNode;
         if (opcion.checked) {
-          opcion.parentNode.classList.add('correcto');
+          label.classList.add('correcto');
+        } else {
+          label.classList.remove('correcto');
         }
       });
 
