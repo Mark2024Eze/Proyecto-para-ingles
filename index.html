@@ -109,8 +109,8 @@
   <h2>Pregunta 5: Indica la oración en pasado perfecto continuo:</h2>
   <p>
     <label class="respuesta-label"><input type="radio" name="pregunta5" value="a"> She had read the book.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta5" value="b"> They have been reading for hours.</label><br>
-    <label class="respuesta-label correcta"><input type="radio" name="pregunta5" value="c"> I will read the book tomorrow.</label>
+    <label class="respuesta-label correcta"><input type="radio" name="pregunta5" value="b"> They have been reading for hours.</label><br>
+    <label class="respuesta-label"><input type="radio" name="pregunta5" value="c"> I will read the book tomorrow.</label>
   </p>
 
   <h2>Pregunta 6: ¿Cuál de las siguientes oraciones está en pasado simple?</h2>
@@ -149,23 +149,17 @@
           respuestasSeleccionadas.push(respuesta);
           if (respuesta.classList.contains('correcta')) {
             respuestasCorrectasSeleccionadas.push(respuesta);
-          }
-        }
-      });
-
-      respuestas.forEach(function(respuesta) {
-        if (respuesta.checked) {
-          if (respuesta.classList.contains('correcta')) {
-            respuesta.parentNode.classList.add('correcto');
           } else {
-            respuesta.parentNode.classList.add('incorrecto');
-            var incorrectoLabel = document.createElement('span');
-            incorrectoLabel.textContent = '❌ Incorrecto';
-            incorrectoLabel.classList.add('incorrecto-label');
-            respuesta.parentNode.appendChild(incorrectoLabel);
+            var incorrectoLabel = respuesta.parentNode.querySelector('.incorrecto-label');
+            if (incorrectoLabel) {
+              incorrectoLabel.parentNode.removeChild(incorrectoLabel);
+            }
+            var incorrectoSpan = document.createElement('span');
+            incorrectoSpan.textContent = '❌';
+            incorrectoSpan.classList.add('incorrecto-label');
+            respuesta.parentNode.appendChild(incorrectoSpan);
           }
         } else {
-          respuesta.parentNode.classList.remove('correcto', 'incorrecto');
           var incorrectoLabel = respuesta.parentNode.querySelector('.incorrecto-label');
           if (incorrectoLabel) {
             incorrectoLabel.parentNode.removeChild(incorrectoLabel);
@@ -182,7 +176,6 @@
       var respuestas = document.querySelectorAll('.respuesta');
       respuestas.forEach(function(respuesta) {
         respuesta.checked = false;
-        respuesta.parentNode.classList.remove('correcto', 'incorrecto');
         var incorrectoLabel = respuesta.parentNode.querySelector('.incorrecto-label');
         if (incorrectoLabel) {
           incorrectoLabel.parentNode.removeChild(incorrectoLabel);
