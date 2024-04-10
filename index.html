@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>Ejercicio de Verbos</title>
   <style>
     body {
       max-width: 800px;
@@ -12,43 +12,6 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #f9f9f9;
       color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      color: #0066cc;
-    }
-
-    h2 {
-      margin-bottom: 15px;
-      color: #0066cc;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    .respuesta-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .respuesta {
-      width: 45px; /* Ajusta el ancho según tus preferencias */
-      margin-right: 10px;
-      margin-bottom: 10px; /* Ajusta la distancia vertical */
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 8px; /* Ajusta el espacio interno del cuadro de texto */
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .respuesta:hover:not(.correcto) {
-      border-color: #0066cc;
-      box-shadow: 0 0 5px rgba(0, 102, 204, 0.7);
     }
 
     .correcto {
@@ -63,34 +26,14 @@
       color: red;
     }
 
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #0066cc;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      margin-right: 10px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+    .respuesta-label {
+      display: block;
     }
 
-    button:hover {
-      background-color: #005bb5;
-      transform: scale(1.05);
+    .respuesta-label .incorrecto-label {
+      margin-left: 5px;
     }
 
-    .limpiar-btn {
-      background-color: #e44d26;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .limpiar-btn:hover {
-      background-color: #d0451b;
-      transform: scale(1.05);
-    }
-
-    /* Estilo para la barra de progreso */
     .progress-container {
       margin-bottom: 20px;
       width: 100%;
@@ -108,58 +51,11 @@
       line-height: 20px;
       color: white;
     }
-
-    /* Agregado estilo para el pie de página */
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      padding-top: 10px;
-      border-top: 1px solid #ccc;
-    }
-
-    @media only screen and (max-width: 600px) {
-      body {
-        padding: 10px;
-        font-size: 14px; /* Reducir el tamaño de fuente para una mejor legibilidad en dispositivos móviles */
-      }
-
-      h2 {
-        margin-top: 20px;
-        font-size: 18px; /* Ajustar el tamaño de los encabezados para dispositivos móviles */
-      }
-
-      p {
-        margin-bottom: 20px;
-        line-height: 1.5; /* Ajustar el espaciado entre líneas para una mejor legibilidad en dispositivos móviles */
-      }
-
-      .respuesta {
-        margin-bottom: 10px; /* Reducir el margen inferior de los cuadros de respuesta */
-        width: calc(50% - 10px); /* Reducir el ancho de las respuestas para dispositivos móviles */
-        font-size: 14px; /* Reducir el tamaño de fuente de las respuestas para dispositivos móviles */
-      }
-
-      .progress-container {
-        margin-bottom: 20px;
-      }
-
-      footer {
-        margin-top: 20px;
-      }
-    }
   </style>
-  <title>Ejercicio de Verbos</title>
 </head>
 <body>
-
   <h1>Práctica de Verbos en Inglés - Overcome</h1>
 
-  <!-- Barra de progreso -->
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar">0%</div>
-  </div>
-
-  <!-- Ejemplos -->
   <h2>Ejemplo 1</h2>
   <p>Yesterday <input type="text" class="respuesta" data-respuesta="was"> (be) my birthday, so my friends <input type="text" class="respuesta" data-respuesta="came"> (come) over to my house for a party. We <input type="text" class="respuesta" data-respuesta="had"> (have) a great time! They <input type="text" class="respuesta" data-respuesta="brought"> (bring) me presents and <input type="text" class="respuesta" data-respuesta="made"> (make) me a cake.</p>
 
