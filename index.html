@@ -59,8 +59,7 @@
       color: red;
     }
 
-    .incorrecto-label::after {
-      content: ' (incorrecta)'; /* Texto para indicar que la respuesta es incorrecta */
+    .incorrecto-label {
       color: red;
     }
 
@@ -152,7 +151,7 @@
   <title>Ejercicio de Verbos</title>
 </head>
 <body>
- <h1>Práctica de Verbos en Inglés - Overcome</h1>
+<h1>Práctica de Verbos en Inglés - Overcome</h1>
 
   <!-- Barra de progreso -->
   <div class="progress-container">
@@ -186,30 +185,30 @@
   <p>
     <label class="respuesta-label"><input type="radio" name="pregunta1" value="a"> I have visited Paris last summer.</label><br>
     <label class="respuesta-label correcta"><input type="radio" name="pregunta1" value="b"> We visited Paris last summer.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta1" value="c"> They were visiting Paris last summer.</label>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta1" value="c"> They were visiting Paris last summer.</label>
   </p>
 
   <h2>Pregunta 2: Identifica la oración en pasado perfecto:</h2>
   <p>
     <label class="respuesta-label"><input type="radio" name="pregunta2" value="a"> She eats dinner at 7 PM.</label><br>
     <label class="respuesta-label correcta"><input type="radio" name="pregunta2" value="b"> They had eaten dinner before the movie.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta2" value="c"> I will eat dinner later.</label>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta2" value="c"> I will eat dinner later.</label>
   </p>
 
   <h2>Pregunta 3: ¿Cuál de las siguientes oraciones está en pasado perfecto continuo?</h2>
   <p>
     <label class="respuesta-label correcta"><input type="radio" name="pregunta3" value="a"> We had been playing games for hours.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta3" value="b"> He played the guitar all evening.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta3" value="c"> She will play the piano tomorrow.</label>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta3" value="b"> He played the guitar all evening.</label><br>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta3" value="c"> She will play the piano tomorrow.</label>
   </p>
 
   <h2>Pregunta 4: Selecciona la oración correcta en pasado simple:</h2>
   <p>
     <label class="respuesta-label correcta"><input type="radio" name="pregunta4" value="a"> We went to the store yesterday.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta4" value="b"> They have gone to the store.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta4" value="c"> I am going to the store now.</label>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta4" value="b"> They have gone to the store.</label><br>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta4" value="c"> I am going to the store now.</label>
   </p>
- <h2>Pregunta 5: Indica la oración en pasado perfecto continuo:</h2>
+<h2>Pregunta 5: Indica la oración en pasado perfecto continuo:</h2>
   <p>
     <label class="respuesta-label"><input type="radio" name="pregunta5" value="a"> She had read the book.</label><br>
     <label class="respuesta-label"><input type="radio" name="pregunta5" value="b"> They have been reading for hours.</label><br>
@@ -226,8 +225,8 @@
   <h2>Pregunta 7: Elige la oración correcta en pasado perfecto:</h2>
   <p>
     <label class="respuesta-label correcta"><input type="radio" name="pregunta7" value="a"> They had played tennis before it started raining.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta7" value="b"> He plays tennis every Sunday.</label><br>
-    <label class="respuesta-label"><input type="radio" name="pregunta7" value="c"> I will play tennis with my friend.</label>
+    <label class="respuesta-label"><input type="radio" name="pregunta7" value="b"> I play tennis every Sunday.</label><br>
+    <label class="respuesta-label incorrecto-label"><input type="radio" name="pregunta7" value="c"> She will play tennis tomorrow.</label>
   </p>
 
   <!-- Botones -->
@@ -243,20 +242,27 @@
       var respuestasCorrectasSeleccionadas = [];
 
       respuestas.forEach(function(respuesta) {
-        if (respuesta.value.trim() === respuesta.dataset.respuesta) {
-          respuesta.classList.add('correcto');
-          respuestasCorrectasSeleccionadas.push(respuesta);
-        } else {
-          respuesta.classList.add('incorrecto');
+        if (respuesta.checked) {
+          respuestasSeleccionadas.push(respuesta);
+          if (respuesta.classList.contains('correcta')) {
+            respuestasCorrectasSeleccionadas.push(respuesta);
+          }
         }
       });
 
-      respuestasCorrectas.forEach(function(correcta) {
-        correcta.classList.add('correcto');
-        respuestasCorrectasSeleccionadas.push(correcta);
+      respuestas.forEach(function(respuesta) {
+        if (respuesta.checked) {
+          if (respuesta.classList.contains('correcta')) {
+            respuesta.parentNode.classList.add('correcto');
+          } else {
+            respuesta.parentNode.classList.add('incorrecto');
+          }
+        } else {
+          respuesta.parentNode.classList.remove('correcto', 'incorrecto');
+        }
       });
 
-      var porcentajeCorrectas = (respuestasCorrectasSeleccionadas.length / (respuestas.length + respuestasCorrectas.length)) * 100;
+      var porcentajeCorrectas = (respuestasCorrectasSeleccionadas.length / respuestasCorrectas.length) * 100;
       document.getElementById('progressBar').style.width = porcentajeCorrectas + '%';
       document.getElementById('progressBar').textContent = porcentajeCorrectas.toFixed(2) + '%';
     }
@@ -264,8 +270,8 @@
     function limpiar() {
       var respuestas = document.querySelectorAll('.respuesta');
       respuestas.forEach(function(respuesta) {
-        respuesta.value = '';
-        respuesta.classList.remove('correcto', 'incorrecto');
+        respuesta.checked = false;
+        respuesta.parentNode.classList.remove('correcto', 'incorrecto');
       });
 
       document.getElementById('progressBar').style.width = '0%';
@@ -278,4 +284,5 @@
     Práctica de Verbos en Inglés - &copy; 2024 Overcome
   </footer>
 </body>
-</html> 
+</html>
+
