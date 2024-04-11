@@ -209,8 +209,8 @@
   <h2>Pregunta 5: Indica la oración en pasado perfecto continuo:</h2>
   <p>
     <label><input type="radio" name="pregunta5" value="a"> She had read the book.</label><br>
-    <label><input type="radio" name="pregunta5" value="b"> They have been reading for hours.</label><br>
-    <label><input type="radio" name="pregunta5" value="c" class="correcta"> I will read the book tomorrow.</label>
+    <label><input type="radio" name="pregunta5" value="b"> I will read the book tomorrow.</label><br>
+    <label><input type="radio" name="pregunta5" value="c" class="correcta">They have been reading for hours.</label>
   </p>
 
   <h2>Pregunta 6: ¿Cuál de las siguientes oraciones está en pasado simple?</h2>
@@ -261,11 +261,12 @@
       opcionesCorrectas.forEach(opcion => {
         if (opcion.checked) {
           opcion.parentNode.classList.add('correcto');
+          respuestasCorrectas++;
         }
       });
 
       // Actualizar la barra de progreso
-      const porcentajeCorrecto = (respuestasCorrectas / respuestas.length) * 100;
+      const porcentajeCorrecto = (respuestasCorrectas / (respuestas.length + opcionesCorrectas.length)) * 100;
       progressBar.style.width = porcentajeCorrecto + '%';
       progressBar.innerHTML = porcentajeCorrecto.toFixed(0) + '% correcto';
     }
